@@ -1,0 +1,28 @@
+--- CMakeLists.txt	2018-10-21 14:35:46.504094633 +0200
++++ CMakeLists.txt.new	2018-10-21 14:54:01.948198691 +0200
+@@ -493,18 +493,18 @@
+ # Installation
+ # ============
+ 
+-install(TARGETS LIB_LIEF_STATIC
+-  ARCHIVE
+-  DESTINATION lib
+-  LIBRARY
+-  DESTINATION lib
+-  COMPONENT libraries)
+-
+ if(LIEF_SHARED_LIB)
+   install(TARGETS LIB_LIEF_SHARED
+     ARCHIVE
+     DESTINATION lib
+     LIBRARY
++    DESTINATION lib
++    COMPONENT libraries)
++else()
++  install(TARGETS LIB_LIEF_STATIC
++    ARCHIVE
++    DESTINATION lib
++    LIBRARY
+     DESTINATION lib
+     COMPONENT libraries)
+ endif()

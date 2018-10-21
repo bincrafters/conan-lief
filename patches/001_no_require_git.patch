@@ -1,0 +1,15 @@
+--- CMakeLists.txt	2018-06-10 18:22:12.000000000 +0200
++++ CMakeLists.txt.new	2018-10-21 12:42:57.134988389 +0200
+@@ -10,12 +10,6 @@
+ include(CppcheckTargets)
+ include(ExternalProject)
+ 
+-find_package(Git REQUIRED)
+-
+-# Information from git
+-# ====================
+-include(LIEFGit)
+-
+ # LIEF Project
+ # ============
+ project(LIEF VERSION ${LIEF_VERSION_MAJOR}.${LIEF_VERSION_MINOR}.${LIEF_VERSION_PATCH})
