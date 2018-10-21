@@ -50,7 +50,6 @@ class LIEFConan(ConanFile):
 
     _source_subfolder = "source_subfolder"
     _build_subfolder = "build_subfolder"
-    _cmake = None
 
     requires = (
         "rang/3.0.0@rang/stable",
@@ -75,9 +74,6 @@ class LIEFConan(ConanFile):
         os.rename(extracted_dir, self._source_subfolder)
 
     def _configure_cmake(self):
-        if self._cmake:
-            return self._cmake
-
         cmake = CMake(self)
 
         def on_if(val):
@@ -116,8 +112,6 @@ class LIEFConan(ConanFile):
             cmake.definitions[var] = "OFF"
 
         cmake.configure(build_folder=self._build_subfolder)
-
-        self._cmake = cmake
 
         return cmake
 
