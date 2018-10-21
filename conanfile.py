@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from conans import ConanFile, CMake, tools
+from conans.tools import os_info
 import os
 
 class LIEFConan(ConanFile):
@@ -59,7 +60,7 @@ class LIEFConan(ConanFile):
     def requirements(self):
         if self.options.with_json:
             self.requires("jsonformoderncpp/3.1.1@vthiery/stable")
-        if self.options.with_frozen:
+        if not os_info.is_windows and self.options.with_frozen:
             self.requires("frozen/20181020@bincrafters/stable")
 
     def config_options(self):
