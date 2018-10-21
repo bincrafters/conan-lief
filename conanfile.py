@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from conans import ConanFile, CMake, tools
-from conans.tools import os_info
+from conans.errors import ConanInvalidConfiguration
+from conans.tools import os_info, Version
 import os
 
 class LIEFConan(ConanFile):
@@ -73,6 +74,23 @@ class LIEFConan(ConanFile):
         tools.get("{0}/archive/{1}.tar.gz".format(source_url, self.version))
         extracted_dir = "LIEF-" + self.version
         os.rename(extracted_dir, self._source_subfolder)
+
+    def configure(self):
+        msg = "LIEF does not support "
+        if self.settings.compiler == "Visual Studio":
+            if self.settings.compiler.version != "15":
+                raise ConanInvalidConfiguration(
+                    msg + "Visual Studio versions older than 15.")
+        elif self.settings.compiler == "gcc":
+            ver = Version(self.settings.compiler.version)
+            if ver < 6:
+                raise ConanInvalidConfiguration(
+                    msg + "gcc versions older than 6.")
+        elif self.settings.compiler == "clang":
+            ver = Version(self.settings.compiler.version)
+            if ver < 6:
+                raise ConanInvalidConfiguration(
+                    msg + "clang versions older than 6.")
 
     def _configure_cmake(self):
         cmake = CMake(self)
