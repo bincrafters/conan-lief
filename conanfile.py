@@ -66,6 +66,7 @@ class LIEFConan(ConanFile):
     def config_options(self):
         if self.settings.os == 'Windows':
             del self.options.fPIC
+            del self.options.with_frozen
 
     def source(self):
         source_url = "https://github.com/lief-project/lief"
