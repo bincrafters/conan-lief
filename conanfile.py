@@ -77,18 +77,17 @@ class LIEFConan(ConanFile):
 
     def configure(self):
         msg = "LIEF does not support "
+        ver = Version(str(self.settings.compiler.version))
         if self.settings.compiler == "Visual Studio":
-            if self.settings.compiler.version != "15":
+            if ver != Version("15"):
                 raise ConanInvalidConfiguration(
                     msg + "Visual Studio versions older than 15.")
         elif self.settings.compiler == "gcc":
-            ver = Version(self.settings.compiler.version)
-            if ver < 6:
+            if ver < Version("6"):
                 raise ConanInvalidConfiguration(
                     msg + "gcc versions older than 6.")
         elif self.settings.compiler == "clang":
-            ver = Version(self.settings.compiler.version)
-            if ver < 6:
+            if ver < Version("6"):
                 raise ConanInvalidConfiguration(
                     msg + "clang versions older than 6.")
 
