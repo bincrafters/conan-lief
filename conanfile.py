@@ -93,7 +93,6 @@ class LIEFConan(ConanFile):
 
     def _configure_cmake(self):
         cmake = CMake(self)
-
         def on_if(val):
             return "ON" if val else "OFF"
         opt_flags = {
@@ -105,11 +104,10 @@ class LIEFConan(ConanFile):
             "with_macho":   "LIEF_MACHO",
             "with_oat":     "LIEF_OAT",
             "with_pe":      "LIEF_PE",
-            "with_py_api":  "LIEF_PYTHON_API",
             "with_vdex":    "LIEF_VDEX",
         }
         for opt, flag in opt_flags.items():
-            cmake.definitions[flag] = on_if(self.options[opt])
+            cmake.definitions[flag] = on_if(getattr(self.options, opt))
 
         major, minor, patch = self.version.split(".")
         cmake.definitions["LIEF_GIT_TAG"] = self.version
@@ -117,14 +115,13 @@ class LIEFConan(ConanFile):
         cmake.definitions["LIEF_VERSION_MAJOR"] = major
         cmake.definitions["LIEF_VERSION_MINOR"] = minor
         cmake.definitions["LIEF_VERSION_PATCH"] = patch
+        cmake.definitions["LIEF_PYTHON_API"] = "OFF"
         cmake.definitions["VERSION_STRING"] = self.version
 
         cmake.definitions["BUILD_SHARED_LIBS"] = on_if(self.options.shared)
         cmake.definitions["LIEF_SHARED_LIB"] = on_if(self.options.shared)
 
-        off_vars = (
-            "LIEF_EXAMPLES", "LIEF_LOGGING", "LIEF_TESTS"
-        )
+        off_vars = "LIEF_EXAMPLES", "LIEF_LOGGING", "LIEF_TESTS"
 
         for var in off_vars:
             cmake.definitions[var] = "OFF"
