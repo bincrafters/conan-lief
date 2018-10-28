@@ -1,0 +1,11 @@
+--- include/LIEF/json.hpp	2018-06-10 18:22:12.000000000 +0200
++++ include/LIEF/json.hpp.new	2018-10-28 20:24:11.336142900 +0100
+@@ -19,7 +19,7 @@
+ #include <LIEF/config.h>
+
+ #ifdef LIEF_JSON_SUPPORT
+-#include <json.hpp>
++#include <nlohmann/json.hpp>
+
+ using json = nlohmann::json;
+ #endif
