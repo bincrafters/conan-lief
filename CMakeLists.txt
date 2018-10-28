@@ -16,7 +16,7 @@ set(__add_lief_dependencies TRUE CACHE INTERNAL "" FORCE)
 # ----
 if(TARGET CONAN_PKG::jsonformoderncpp)
   add_custom_target(lief_libjson ALL DEPENDS CONAN_PKG::jsonformoderncpp)
-  set(LIBJSON_SOURCE_DIR ${CONAN_INCLUDE_DIRS_JSONFORMODERNCPP}/nlohmann CACHE INTERNAL "" FORCE)
+  set(LIBJSON_SOURCE_DIR ${CONAN_INCLUDE_DIRS_JSONFORMODERNCPP} CACHE INTERNAL "" FORCE)
   message(STATUS "Enable JSON support")
   set(ENABLE_JSON_SUPPORT 1 CACHE INTERNAL "" FORCE)
 else()
@@ -27,7 +27,7 @@ endif()
 # Rang
 # ----
 add_custom_target(lief_rang_cpp_color ALL DEPENDS CONAN_PKG::rang)
-set(LIBRANG_SOURCE_DIR ${CONAN_INCLUDE_DIRS_RANG} CACHE INTERNAL "" FORCE)
+set(LIBRANG_SOURCE_DIR ${CONAN_INCLUDE_DIRS_RANG}/.. CACHE INTERNAL "" FORCE)
 
 # mbed TLS
 # --------
