@@ -7,10 +7,14 @@ conan_basic_setup(TARGETS)
 # This makes LIEF skip its own dependency management.
 set(__add_lief_dependencies TRUE CACHE INTERNAL "" FORCE)
 
-# This is patched out completely because git is required
+# This is patched out completely because git is required:
 # outside the LIEFGit.cmake file: https://github.com/lief-project/LIEF/issues/224
 # The version and tag variables are pass from the conanfile.
 # set(__add_lief_git TRUE CACHE INTERNAL "" FORCE)
+
+# The following targets bridge the gap between LIEF's internal
+# dependency handling (based on ExternalProject_Add targets)
+# and conan.
 
 # Json
 # ----
