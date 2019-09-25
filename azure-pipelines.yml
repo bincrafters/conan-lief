@@ -32,6 +32,9 @@ jobs:
       GCC8:
         CONAN_GCC_VERSIONS: 8
         CONAN_DOCKER_IMAGE: conanio/gcc8
+      GCC8:
+        CONAN_GCC_VERSIONS: 9
+        CONAN_DOCKER_IMAGE: conanio/gcc9
       CLANG3.9:
         CONAN_CLANG_VERSIONS: 3.9
         CONAN_DOCKER_IMAGE: conanio/clang39
@@ -44,3 +47,9 @@ jobs:
       CLANG6.0:
         CONAN_CLANG_VERSIONS: 6.0
         CONAN_DOCKER_IMAGE: conanio/clang60
+      CLANG6.0:
+        CONAN_CLANG_VERSIONS: 7.0
+        CONAN_DOCKER_IMAGE: conanio/clang7
+      CLANG6.0:
+        CONAN_CLANG_VERSIONS: 8
+        CONAN_DOCKER_IMAGE: conanio/clang8
