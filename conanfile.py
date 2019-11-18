@@ -52,12 +52,12 @@ class LIEFConan(ConanFile):
 
     requires = (
         "rang/3.0.0@rang/stable",
-        "mbedtls/2.6.1@bincrafters/stable",
+        "mbedtls/2.16.3-apache",
     )
 
     def requirements(self):
         if self.options.with_json:
-            self.requires("jsonformoderncpp/3.1.1@vthiery/stable")
+            self.requires("jsonformoderncpp/3.7.0")
         if not os_info.is_windows and self.options.with_frozen:
             self.requires("frozen/20181020@bincrafters/stable")
 
