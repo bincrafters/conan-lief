@@ -53,3 +53,6 @@ jobs:
       CLANG6.0:
         CONAN_CLANG_VERSIONS: 8
         CONAN_DOCKER_IMAGE: conanio/clang8
+      CLANG6.0:
+        CONAN_CLANG_VERSIONS: 9
+        CONAN_DOCKER_IMAGE: conanio/clang9

@@ -9,7 +9,6 @@ class LIEFConan(ConanFile):
     description = "Library to Instrument Executable Formats"
     url = "https://github.com/bincrafters/conan-lief"
     homepage = "https://github.com/lief-project/LIEF"
-    author = "Bincrafters <bincrafters@gmail.com>"
     license = "MIT"
 
     exports = ["LICENSE.md", "patches/*.patch"]
