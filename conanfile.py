@@ -56,7 +56,7 @@ class LIEFConan(ConanFile):
 
     def requirements(self):
         if self.options.with_json:
-            self.requires("jsonformoderncpp/3.7.0")
+            self.requires("nlohmann_json/3.7.3")
         if not os_info.is_windows and self.options.with_frozen:
             self.requires("frozen/20181020@bincrafters/stable")
 
