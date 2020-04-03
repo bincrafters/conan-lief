@@ -11,7 +11,7 @@ class LIEFConan(ConanFile):
     homepage = "https://github.com/lief-project/LIEF"
     license = "MIT"
 
-    exports = ["LICENSE.md", "patches/*.patch"]
+    exports = ["patches/*.patch"]
 
     exports_sources = ["CMakeLists.txt"]
     generators = "cmake"
