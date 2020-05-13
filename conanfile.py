@@ -50,7 +50,7 @@ class LIEFConan(ConanFile):
     _build_subfolder = "build_subfolder"
 
     requires = (
-        "rang/3.0.0@rang/stable",
+        "rang/3.1.0",
         "mbedtls/2.16.3-apache",
     )
 
@@ -58,7 +58,7 @@ class LIEFConan(ConanFile):
         if self.options.with_json:
             self.requires("nlohmann_json/3.7.3")
         if not os_info.is_windows and self.options.with_frozen:
-            self.requires("frozen/20181020@bincrafters/stable")
+            self.requires("frozen/1.0.0")
 
     def config_options(self):
         if self.settings.os == 'Windows':
